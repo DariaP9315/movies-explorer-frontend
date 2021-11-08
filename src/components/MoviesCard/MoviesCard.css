@@ -11,8 +11,8 @@
 
 .card__name {
   font-weight: 500;
-  font-size: 15px;
-  line-height: 18px;
+  font-size: 13px;
+  line-height: 15,73px;
   color: #000000;
   align-self: center;
   text-align: left;
@@ -20,8 +20,8 @@
 
 .card__duration {
   font-weight: normal;
-  font-size: 13px;
-  line-height: 18px;
+  font-size: 11px;
+  line-height: 13,31px;
   color: #A0A0A0;
   margin: 0 16px 16px;
 }
@@ -68,4 +68,15 @@
   background-image: url('../../images/delete-mark.svg');
   background-repeat: no-repeat;
   background-position: center;
+}
+
+@media screen and (max-width: 500px) {
+  .card__name {
+    font-size: 12px;
+    line-height: 14,52px;
+  }
+  .card__duration {
+    font-size: 10px;
+    line-height: 12,1px;
+  }
 }
