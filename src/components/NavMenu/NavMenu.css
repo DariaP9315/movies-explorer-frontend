@@ -1,0 +1,31 @@
+.nav-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-left: 40px;
+}
+
+.menu-button {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        display: flex;
+        flex-direction: row;
+        margin: 0;
+        width: 44px;
+    }
+    .menu-button {
+      display: block;
+      width: 44px;
+      height: 44px;
+      background-color: #fff;
+      background-image: url('../../images/icon-menu.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      padding: 0;
+      border: none;
+    }
+}

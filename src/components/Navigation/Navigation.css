@@ -1,0 +1,25 @@
+.navigation {
+  display: flex;
+  column-gap: 16px;
+  margin: 0;
+  align-items: center;
+  margin-right: 50px;
+}
+
+.navigation__link {
+  text-decoration: none;
+  color: #000;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.navigation__link_active {
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .navigation {
+    display: none;
+  }
+}
