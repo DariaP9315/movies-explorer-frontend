@@ -1,0 +1,35 @@
+.nav-tab {
+  min-height: 66px;
+  background-color: #000;
+  color: #fff;
+  margin: 0;
+  text-decoration: underline;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-tab__container {
+  padding: 0;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 40px;
+  
+}
+
+.nav-tab__link {
+  color: #fff;
+  margin: 0;
+  font-size: 13px;
+  text-align: center;
+}
+
+@media screen and (max-width: 320px) {
+  .nav-tab__container{
+    column-gap: 24px;
+  }
+  
+  .nav-tab__link{
+    font-size: 11px;
+  }
+}

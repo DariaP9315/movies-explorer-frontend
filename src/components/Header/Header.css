@@ -1,0 +1,24 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 70px;
+  min-height: 74px;
+  border: none;
+}
+
+.header_landing {
+  background-color: #5C5C5C;
+}
+
+@media (max-width: 1020px) {
+  .header {
+    padding: 0 30px;
+  }
+}
+
+@media (max-width: 760px) {
+  .header {
+    padding: 0 14px;
+  }
+}
