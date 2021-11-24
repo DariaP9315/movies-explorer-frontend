@@ -1,60 +1,49 @@
-import React from 'react';
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import './Menu.css';
 import Account from '../Account/Account';
 
-class Menu extends React.Component {
+import './Menu.css';
 
-  handleCloseByOverlay = (event) => {
-    if (event.target === event.currentTarget) {
-      this.props.onCloseMenu();
-    }
-  };
+function Menu({ main }) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  render() {
-    return (
-      <div
-        className={`menu${this.props.isOpen ? " menu_opened" : ''}`}
-        onClick={this.handleCloseByOverlay}
-      >
+  const handleMenuClick = () => setIsMenuOpen(!isMenuOpen);
+
+  return (
+    <>
+      <button className={`menu__btn ${isMenuOpen ? 'menu__close-btn' : 'menu__burger-btn'} `} onClick={handleMenuClick} />
+      <nav className={`menu__auth ${isMenuOpen ? 'menu__side' : ''}`}>
         <div className="menu__container">
-          <button
-            type="button"
-            aria-label="Удалить"
-            className="menu__close-button"
-            onClick={this.props.onCloseMenu}
-          ></button>
-
-          <div className="menu__nav">
-            <NavLink exact to="/"
-              className="menu__link"
-              activeClassName="menu__link_active"
-              onClick={this.props.onCloseMenu}
-            >
-              Главная
-            </NavLink>
-            <NavLink to="/movies"
-              className="menu__link"
-              activeClassName="menu__link_active"
-              onClick={this.props.onCloseMenu}
-            >
-              Фильмы
-            </NavLink>
-            <NavLink to="/saved-movies"
-              className="menu__link"
-              activeClassName="menu__link_active"
-              onClick={this.props.onCloseMenu}
-            >
-              Сохранённые фильмы
-            </NavLink>
-          </div>
-
-          <Account show={this.props.isOpen} onCloseMenu={this.props.onCloseMenu} />
+          <NavLink
+            exact to="/"
+            className="menu__film-link"
+            activeClassName="menu__film-link_active"
+            onClick={handleMenuClick}
+          >
+            Главная
+          </NavLink>
+          <NavLink
+            to="/movies"
+            className={`menu__film-link ${main ? 'menu__film-link_main' : ''}`}
+            activeClassName="menu__film-link_active"
+            onClick={handleMenuClick}
+          >
+            Фильмы
+          </NavLink>
+          <NavLink
+            to="/saved-movies"
+            className={`menu__film-link ${main ? 'menu__film-link_main' : ''}`}
+            activeClassName="menu__film-link_active"
+            onClick={handleMenuClick}
+          >
+            Сохраненные фильмы
+          </NavLink>
         </div>
-      </div>
-    );
-  }
+        <Account show={handleMenuClick} onClick={handleMenuClick} />
+
+      </nav>
+    </>
+  );
 }
 
 export default Menu;
-

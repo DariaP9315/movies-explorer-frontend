@@ -1,38 +1,46 @@
-import React from 'react';
+import SearchForm from '../SearchForm/SearchForm';
+import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import Preloader from '../Preloader/Preloader'; 
+
 import './Movies.css';
-import Header from "../Header/Header";
-import SearchForm from "../SearchForm/SearchForm";
-import Footer from "../Footer/Footer";
-import MoviesCardList from "../MoviesCardList/MoviesCardList";
-import More from "../More/More";
 
-class Movies extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loggedIn: props.loggedIn,
-    };
-  }
-
-  render() {
-    return (
-      <div className="page">
-        <Header
-          loggedIn={this.state.loggedIn}
-          onOpenMenu={this.props.onOpenMenu}
+function Movies({
+  allMovies,
+  savedMovies,
+  createMovie,
+  deleteMovie,
+  handleCheckBox, 
+  isShortMovies,
+  isLoading,
+  handleSearchSubmit
+}) {
+  return (
+    <main className="movies">
+      <div className="movies__container">
+        <SearchForm
+          shortMovies={isShortMovies}
+          handleCheckBox={handleCheckBox}
+          searchSubmit={handleSearchSubmit}
         />
-        <main>
-          <SearchForm />
-          <MoviesCardList
-            cards={this.props.cards}
-            isSavedMovies={this.props.isSavedMovies}
-          />
-          <More />
-        </main>
-        <Footer />
+        {isLoading ? (
+          <Preloader />
+        ) : (
+          <>
+            {allMovies === null ? (
+              <p className="movies__message">Введите в поиск ключевое слово</p>
+            ) : (
+              <MoviesCardList
+                allMovies={allMovies}
+                savedMovies = {savedMovies}
+                createMovie = {createMovie}
+                deleteMovie={deleteMovie}
+              />
+            )}
+          </>
+        )}
       </div>
-    );
-  }
+    </main>
+  );
 }
 
 export default Movies;

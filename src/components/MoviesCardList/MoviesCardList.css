@@ -1,5 +1,8 @@
 .card-list {
   padding: 70px 70px 10px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
 }
 
 .cards {
@@ -9,6 +12,35 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 32px;
+}
+
+.nothing-found {
+  margin: 0;
+  text-align: center;
+}
+
+.cards__more-btn {
+  padding: 0;
+  margin: 50px auto;
+  text-align: center;
+  width: 320px;
+  height: 36px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.21;
+  background-color: #fff;
+  border: 1px solid #E8E8E8;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  color: #000000;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.cards__more-btn:hover {
+  background-color: #ebebeb;
+  cursor: pointer;
 }
 
 @media (max-width: 1020px) {
@@ -29,5 +61,8 @@
   .cards {
     grid-template-columns: 1fr;
     row-gap: 16px;
+  }
+  .cards__more-btn {
+    width: 240px;
   }
 }

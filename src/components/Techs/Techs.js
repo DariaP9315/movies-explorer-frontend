@@ -2,9 +2,7 @@ import React from 'react';
 import './Techs.css';
 import SectionTitle from '../SectionTitle/SectionTitle';
 
-class Techs extends React.Component {
-
-  render() {
+function Techs() {
     return (
       <section className="techs" id="techs">
         <SectionTitle title="Технологии" />
@@ -22,6 +20,5 @@ class Techs extends React.Component {
       </section>
     );
   }
-}
 
 export default Techs;

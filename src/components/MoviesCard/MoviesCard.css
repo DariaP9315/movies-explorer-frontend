@@ -68,6 +68,11 @@
   background-image: url('../../images/delete-mark.svg');
   background-repeat: no-repeat;
   background-position: center;
+  border: none;
+  border-radius: 50px;
+  background-color: #F9F9F9;
+  width: 21px;
+  height: 21px;
 }
 
 @media screen and (max-width: 500px) {
