@@ -1,5 +1,5 @@
-//export const BASE_URL = 'https://api.movie-explorer.popova.nomoredomains.club';
-export const BASE_URL = 'http://localhost:3000';
+export const BASE_URL = 'https://api.movie-explorer.popova.nomoredomains.rocks';
+//export const BASE_URL = 'http://localhost:3000';
 
 export const MOVIES_URL = 'https://api.nomoreparties.co/beatfilm-movies';
 export const IMG_URL = 'https://api.nomoreparties.co';
