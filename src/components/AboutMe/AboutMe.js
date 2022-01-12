@@ -1,7 +1,7 @@
 import React from 'react';
 import './AboutMe.css';
 import SectionTitle from '../SectionTitle/SectionTitle';
-import photoPath from '../../images/photo.jpg';
+import photoPath from '../../images/photo.jpeg';
 import arrowPath from '../../images/arrow.svg';
 
 function AboutMe() {
