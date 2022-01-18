@@ -1,26 +1,89 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
+
+import MoviesCard from "../MoviesCard/MoviesCard";
+
+import { throttle } from '../../utils/throttleFunc'; 
+
+import {
+  CARDS_MAX,
+  ADD_CARDS_MAX,
+  CARDS_MIDDLE,
+  CARDS_MIN,
+  ADD_CARDS_MIN,
+} from '../../utils/constants';
+
 import './MoviesCardList.css';
-// import Preloader from "../Preloader/Preloader";
-import MoviesCard from '../MoviesCard/MoviesCard';
 
-class MoviesCardList extends React.Component {
+function MoviesCardList({ allMovies, savedMovies, createMovie, deleteMovie }) {
+  const[width, setWidth] = useState(window.innerWidth);
 
-  render() {
-    return (
-      <section className="card-list">
-        {/* <Preloader /> */}
+  const[moviesAmount, setMoviesAmount] = useState(12);
+  const[addedAmount, setAddedAmount] = useState(3);
+
+  const[renderedMovies, setRenderedMovies] = useState([]);
+
+  function handleResize() {
+    if (width > 800) {
+      setMoviesAmount(CARDS_MAX);
+      setAddedAmount(ADD_CARDS_MAX);
+    } else if (width > 505) {
+      setMoviesAmount(CARDS_MIDDLE);
+      setAddedAmount(ADD_CARDS_MIN);
+    } else {
+      setMoviesAmount(CARDS_MIN);
+      setAddedAmount(ADD_CARDS_MIN);
+    }
+  }
+
+  function handleMoreClick() {
+    setRenderedMovies(allMovies.slice(0, renderedMovies.length + addedAmount));
+  }
+
+  useEffect(() => {
+    handleResize();
+  }, [width]);
+
+  useEffect(() => {
+      setRenderedMovies(allMovies.slice(0, moviesAmount));
+  }, [allMovies, moviesAmount]);
+
+  useEffect(() => {
+    const updateWidth = throttle(() => {
+      setWidth(window.innerWidth);
+    }, 500);
+
+    window.addEventListener('resize', updateWidth);
+
+    return () => window.removeEventListener('resize', updateWidth);
+  }, []);
+
+  return (
+    <section className="card-list">
+      {!allMovies.length ? (
+        <p className="nothing-found">Ничего не найдено</p>
+      ) : (
         <ul className="cards">
-          {this.props.cards.map((cardInfo) => (
-            <MoviesCard
-              card={cardInfo}
-              key={cardInfo._id}
-              isSavedMovies={this.props.isSavedMovies}
-            />
+          {renderedMovies.map((item) => (
+              <MoviesCard
+                key={item.id || item.movieId}
+                movie={item}
+                savedMovies = {savedMovies}
+                createMovie = {createMovie}
+                deleteMovie = {deleteMovie}
+              />
           ))}
         </ul>
-      </section>
-    );
+      )}
+      {renderedMovies.length < allMovies.length ? (
+        <button
+          className="cards__more-btn"
+          onClick={handleMoreClick}
+        >
+          Ещё
+        </button>
+        ) : null}
+    </section>
+  );
   }
-}
 
 export default MoviesCardList;

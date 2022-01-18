@@ -73,15 +73,19 @@
   font-size: 13px;
   line-height: 16px;
   color: #FF4062;
+  border: none;
+  background-color: transparent;
 }
 
 @media (max-width: 760px) {
   .profile {
     padding: 70px 30px 40px;
   }
+
   .profile__container {
     width: 260px;
   }
+
   .profile__edit-button {
     margin-top: 379px;
   }

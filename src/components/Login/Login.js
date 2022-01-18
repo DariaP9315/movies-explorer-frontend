@@ -1,36 +1,40 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
+import useFormWithValidation from '../../hooks/useFormWithValidation';
+
 import './Login.css';
 import logoPath from '../../images/logo.svg';
+import Form from '../Form/Form';
 
-class Login extends React.Component {
+function Login({handleAuthorize, isAuthError}) {
+  const formWithValidation = useFormWithValidation();
+  const { email, password } = formWithValidation.values;
 
-  render() {
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    handleAuthorize(email, password);
+    formWithValidation.resetForm();
+  }
+
     return (
-      <div className="login">
+      <section className="login">
         <Link to="/" className="logo-inAuth">
           <img alt='Логотип' src={logoPath} />
         </Link>
-
         <h1 className="login__greeting">Рады видеть!</h1>
-
-        <label htmlFor="login-email" className="login__label">E-mail</label>
-        <input type="email" id="login-email" name="login-email" placeholder="E-mail" className="login__input login__email-input" required />
-
-        <label htmlFor="login-pass" className="login__label">Пароль</label>
-        <input type="password" id="login-pass" name="login-pass" placeholder="Пароль" className="login__input login__pass-input" required />
-
-        <div className="login__error-message login__error-message_hide">Что-то пошло не так...</div>
-
-        <input type="submit" value="Войти" className="login__sign-button" />
-
-        <div className="login__reg-block">
-          <span className="login__reg-text">Ещё не зарегистрированы?</span>
-          <Link to="/signup" className="login__reg-link">Регистрация</Link>
-        </div>
-      </div>
+        <Form
+          formName="login"
+          btnTitle="Войти"
+          question="Ещё не зарегистрированы?"
+          linkTo="/signup"
+          linkText="Регистрация"
+          formData = {formWithValidation}
+          onSubmit={handleSubmit}
+          isAuthError={isAuthError}
+        />
+      </section>
     );
   }
-}
 
 export default Login;

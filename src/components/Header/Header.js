@@ -1,28 +1,25 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Route, Link, useLocation } from 'react-router-dom';
 import './Header.css';
 import Auth from '../Auth/Auth';
-import NavMenu from '../NavMenu/NavMenu';
+import Menu from '../Menu/Menu';
 import logoPath from '../../images/logo.svg';
 
-class Header extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loggedIn: props.loggedIn,
-    };
-  }
+function Header({ loggedIn }) {
+  const location = useLocation();
+  const Main = location.pathname === '/';
 
-  render() {
-    return (
-      <header className={`header${this.state.loggedIn ? '' : ' header_landing'}`}>
-        <Link to="/">
-          <img alt='Логотип' src={logoPath} />
+  return (
+    <Route exact path={['/', '/movies', '/saved-movies', '/profile']}>
+      <header className={`header ${Main ? 'header_landing' : ''}`}>
+        <Link to='/'>
+          <img alt='логотип' src={logoPath} />
         </Link>
-        {this.state.loggedIn ? <NavMenu onOpenMenu={this.props.onOpenMenu} /> : <Auth />}
+        {loggedIn ? (
+          <Menu main={Main} />) : (<Auth />)}
       </header>
-    );
-  }
+    </Route>
+  );
 }
 
 export default Header;

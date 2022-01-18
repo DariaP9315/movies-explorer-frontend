@@ -1,1 +1,37 @@
-
+.movies {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .movies__container {
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0 70px 80px;
+    max-width: 1280px;
+    min-height: 80vh;
+  }
+  
+  .movies__message {
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    padding-top: 50px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.21;
+    color: #5C5C5C;
+  }
+  
+  @media screen and (max-width: 840px) {
+    .movies__container {
+      padding: 0 30px 80px;
+    }
+  }
+  
+  @media screen and (max-width: 505px) {
+    .movies__container {
+      padding: 0 10px 80px;
+    }
+  }
+  
