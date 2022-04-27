@@ -12,8 +12,8 @@ function Footer() {
             rel="noopener noreferrer">Яндекс.Практикум</a>
           <a href="https://github.com/" className="footer__link" target="_blank"
             rel="noopener noreferrer">Github</a>
-          <a href="https://www.facebook.com/" className="footer__link" target="_blank"
-            rel="noopener noreferrer">Facebook</a>
+          <a href="https://www.vk.com/" className="footer__link" target="_blank"
+            rel="noopener noreferrer">ВКонтакте</a>
         </div>
       </div>
     </footer>
