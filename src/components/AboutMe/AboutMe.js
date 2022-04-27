@@ -16,8 +16,8 @@ function AboutMe() {
             Я родилась и живу в Тольятти, закончила институт туризма и социальных технологий в ПВГУС в 2015 г. В 2021 г. закончила обучение в Я.Практикуме по специальности "Веб-разработчик". С 2016 года и по настоящее время работаю в Тольяттинском художественном музее. После того, как прошла курс по веб-разработке, намерена найти работу на позиции фронтендера.
           </p>
           <div className="about-me__social">
-            <a href="https://www.facebook.com/dasha.popova.54584" className="about-me__social-item" target="_blank"
-              rel="noopener noreferrer">Facebook</a>
+            <a href="https://vk.com/dasha_flash15" className="about-me__social-item" target="_blank"
+              rel="noopener noreferrer">ВКонтакте</a>
             <a href="https://github.com/DariaP9315" className="about-me__social-item" target="_blank"
               rel="noopener noreferrer">Github</a>
           </div>
